@@ -1,0 +1,40 @@
+{
+  "hash": "959d28bd",
+  "configHash": "4614a3dd",
+  "lockfileHash": "fa2dd9d1",
+  "browserHash": "16d96c30",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "eb188216",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "3ce767cc",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "92746182",
+      "needsInterop": true
+    },
+    "vexflow": {
+      "src": "../../node_modules/vexflow/build/esm/entry/vexflow.js",
+      "file": "vexflow.js",
+      "fileHash": "757908fb",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-3SOFIYQK": {
+      "file": "chunk-3SOFIYQK.js"
+    },
+    "chunk-HKJ2B2AA": {
+      "file": "chunk-HKJ2B2AA.js"
+    }
+  }
+}
