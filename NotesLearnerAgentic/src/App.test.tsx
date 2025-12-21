@@ -17,6 +17,7 @@ describe('App', () => {
       name: 'C',
       clef: 'treble',
       accidental: 'natural',
+      keySignature: 'C',
     });
 
     render(<App />);
@@ -49,6 +50,7 @@ describe('App', () => {
       name: 'B',
       clef: 'treble',
       accidental: 'sharp', // B#
+      keySignature: 'C',
     });
 
     render(<App />);
@@ -77,6 +79,7 @@ describe('App', () => {
       name: 'B',
       clef: 'treble',
       accidental: 'sharp', // B#
+      keySignature: 'C',
     });
 
     render(<App />);
@@ -92,6 +95,34 @@ describe('App', () => {
     // Score should be -1 (failure)
     await waitFor(() => {
       expect(screen.getByTestId('score')).toHaveTextContent('-1');
+    });
+  });
+
+  it('should respect key signature: F in G major (F#) should recognize as F# key', async () => {
+    const user = userEvent.setup();
+    
+    // In key of G major, F is sharp (F#)
+    // Note with accidental='natural' means "follow key signature", so it should be F#
+    vi.spyOn(noteUtils, 'generateRandomNote').mockReturnValueOnce({
+      name: 'F',
+      clef: 'treble',
+      accidental: 'natural', // Follow key signature
+      keySignature: 'G', // G major has F#
+    });
+
+    render(<App />);
+
+    await waitFor(() => {
+      expect(screen.getByTestId('score')).toHaveTextContent('0');
+    });
+
+    // Click F# key (which is correct for F in key of G)
+    const fSharpKey = screen.getByTestId('key-F#');
+    await user.click(fSharpKey);
+
+    // Score should be +1 (correct answer)
+    await waitFor(() => {
+      expect(screen.getByTestId('score')).toHaveTextContent('1');
     });
   });
 });
